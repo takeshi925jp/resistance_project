@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.resistance.mapper.RoomMapper">
+
+    <select id="showRooms" resultType="com.example.resistance.entity.Room">
+		select * from room
+    </select>
+
+    <select id="showPlayer" resultType="com.example.resistance.entity.Player">
+		select * from player where room_id = #{id};
+    </select>
+
+   <select id="showRoom" resultType="com.example.resistance.entity.Room">
+		select * from room where id = #{id};
+    </select>
+
+    <insert id="createRoom" >
+		insert into room
+			(room_num,current_num ,spy_num, play_time)
+			values (#{roomNum}, #{currentNum},#{spyNum}, #{playTime})
+    </insert>
+
+    <insert id="createPlayer" >
+		insert into player
+			(room_id,player_name)
+			values (#{roomId}, #{playerName})
+    </insert>
+
+    <update id="updatePlayerNum" >
+		update room set current_player_num= (select count(*) from player where room_id = #{id}) where id = #{id};
+    </update>
+
+    <delete id="deleteRoom" >
+		delete from room where id = #{id};
+    </delete>
+
+
+</mapper>

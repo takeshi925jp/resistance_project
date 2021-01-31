@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<title>Resistance GameRoom</title>
+
+
+</head>
+<body>
+	<h2 class="header">Resistance Online</h2>
+	<h3>Game Room</h3>
+
+	<!--------- ゲーム開始ボタン --------->
+	<form name="form" th:action="@{/start_get}" method="post"
+		th:object="${room}">
+		<!--  <input type="hidden" id="playTime"  value=${rooom.playTime}>  -->
+		<input type="hidden" id="playTime" th:value="${playTime}" /> <input
+			class="button_decolation" type="submit" value="ゲーム開始"
+			onclick="gameStart()">
+	</form>
+
+
+	<!--------- カウントダウン --------->
+	<div class="timer">
+		- 1日目の会議終了まで -
+		<div id="count" class="timertext"></div>
+	</div>
+
+
+	<!--------- プレイヤー名 --------->
+	<div class="player_name">
+		<p>
+			プレイヤー名：<span th:text="${userName}"></span>
+		</p>
+	</div>
+
+
+	<!--------- 参加者 --------->
+	<div class="box28">
+		<span class="box-title">参加者</span>
+		<th:block th:each="player : ${players}">
+			<p class="show_players">
+				[<span th:text="${player.playerName}"></span>]
+			</p>
+		</th:block>
+	</div>
+
+<!--------- jsでスタート情報取得して、表示するようにする --------->
+<!--------- 役職情報 --------->
+	<div id="formblock">
+		<p>
+			あなたの役職は「<span th:text="${position}"></span>」です。
+		</p>
+	</div>
+
+1回目のミッションがスタートしました。
+リーダーには〇〇さんが選定されました。
+リーダーは〇〇人、ミッションへ行く人を選んでください
+
+
+	<script th:inline="javascript" type="text/javascript" src="js/game.js"></script>
+</body>
+</html>

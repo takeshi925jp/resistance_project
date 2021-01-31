@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Resistance Top</title>
+
+
+</head>
+<body>
+<h2 class="header">Resistance Online</h2>
+
+<input class="button_decolation" type="button" name="rule_info" value="rule info">
+
+<form  th:action="@{/create_room}" th:object="${createRoom}" method="post">
+<p><input class="button_decolation" type="button" value="create room" onclick="showForm()"></p>
+
+<div id="formblock" class="create_room_box">
+<p>プレイ人数：<input type="text" name="roomNum" value=""></p>
+<p>スパイ人数：<input type="text" name="spyNum" value=""></p>
+<p>制限時間：
+<select name="playTime">
+<option value="80">80</option>
+<option value="60">60</option>
+<option value="40">40</option>
+</select>
+</p>
+<p><input type="hidden" name="currentNum" value="1"></p>
+<p><input type="submit" value="create" ></p>
+</div>
+</form>
+
+
+<div class="show_rooms">
+<th:block th:each="room : ${rooms}">
+<form  th:action="@{/enter_gameroom}"  method="post" th:object="${room}">
+	<p> 部屋番号：<span th:text="${room.id}" ></span></p>
+	<p> 最大参加人数：<span th:text="${room.roomNum}" ></span></p>
+	<p> スパイの人数：<span th:text="${room.spyNum}" ></span></p>
+	<p> 制限時間：<span th:text="${room.playTime}" ></span>分</p>
+	<p> 現在参加者：<span th:text="${room.current_player_num}" ></span>人</p>
+	<p><input type="submit" value="入室"   class="button_decolation"></p>
+	<p>プレイヤー名<input type="text" name="playerName" value=""></p>
+	<p><input type="hidden" name="roomId" th:value="${room.id}"></p>
+</form>
+
+<form  th:action="@{/delete_room}"  method="post" th:object="${room}">
+	<p><input type="hidden" name="Id" th:value="${room.id}"></p>
+	<p><input type="submit" value="部屋を削除"   class="button_decolation"></p>
+</form>
+
+------------------------------------------
+</th:block>
+</div>
+
+
+
+<script type="text/javascript" src="js/top.js"></script>
+</body>
+</html>

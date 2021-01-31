@@ -1,0 +1,82 @@
+.header{
+	color:red;
+	text-align:center;
+}
+
+.button_decolation{
+font-size: 1.1em;
+font-weight: bold;
+padding: 3px 15px;
+background-color: #248;
+color: #fff;
+border-style: none;
+box-shadow: 2px 2px 3px 1px #666;
+-moz-box-shadow: 2px 2px 3px 1px #666;
+-webkit-box-shadow: 2px 2px 3px 1px #666;
+}
+.button_decolation:hover{
+	background-color: #24d;
+	color: #fff;
+}
+
+.create_room_box{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+.create_room_box p {
+    margin: 0;
+    padding: 0;
+}
+
+.show_rooms {
+    background-color:yellow;
+}
+
+li.show_players {
+  float: left;
+  list-style: none;
+  margin: 3px;
+}
+
+.box28 {
+    position: relative;
+    margin: 0% 70% 0% 0%;
+    padding:1.5% 0% 0% 0%;
+    border: solid 2px #FFC107;
+
+}
+.box28 .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -2px;
+    left: -2px;
+    padding: 0 9px;
+
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #FFC107;
+    color: #ffffff;
+    font-weight: bold;
+}
+.box28 p {
+    margin: 0;
+    padding: 0;
+
+}
+
+.timer {
+	position: relative;
+	margin: 1.5% 70% 0% 0%;
+	padding: 0% 0% 0% 0%;
+	color: #364e96;
+	border-top: solid 3px #364e96;
+	border-bottom: solid 3px #364e96;
+}
+
+.timertext {
+  color: red;
+  text-shadow: 1px 1px 2px silver;
+  font-weight:bold;
+}
